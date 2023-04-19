@@ -35,7 +35,58 @@
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
+            <!-- Image View for "Delete" -->
+            <ImageView
+                android:id="@+id/imageViewDelete"
+                android:layout_width="38dp"
+                android:layout_height="37dp"
+                android:layout_marginLeft="300dp"
+                android:src="@drawable/ic_baseline_delete_24" />
+
+            <!-- Image View for "Done" -->
+            <ImageView
+                android:id="@+id/imageViewDone"
+                android:layout_width="35dp"
+                android:layout_height="34dp"
+                android:layout_marginLeft="350dp"
+                android:src="@drawable/ic_baseline_done_24" />
+
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textViewDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="end"
+            android:textColor="#E11584"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+        <!-- EditText for Title -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="#E11584"
+            android:textColorHint="#E11584"
+            android:hint="Title" />
+
+        <!-- EditText for Note -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:inputType="textMultiLine"
+            android:textColor="#E11584"
+            android:textColorHint="#E11584"
+            android:hint="Note" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

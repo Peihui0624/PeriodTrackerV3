@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -41,6 +43,9 @@ public class SleepTrackerActivity extends AppCompatActivity {
         }catch (Exception e){
 
         }
+
+        TextView textView = findViewById(R.id.textViewDateTime);
+        textView.setText("Date: " + intent.getStringExtra("date"));
         databaseHelper = new DatabaseHelper(this);
 
         TimePicker sleepTimePicker = findViewById(R.id.sleepTimePicker);

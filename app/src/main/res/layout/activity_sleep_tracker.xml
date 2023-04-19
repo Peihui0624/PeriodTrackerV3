@@ -48,6 +48,18 @@
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"/>
 
+        <TextView
+            android:id="@+id/textViewDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="end"
+            android:textColor="#E11584"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
         <!--Sleep Time Picker -->
         <TextView
             android:id="@+id/sleepTimeText"
@@ -70,7 +82,8 @@
             android:layout_marginTop="8dp"
             android:background="#50FFFFFF"
             android:timePickerMode="spinner"
-            android:textColor="#E11584"/>
+            android:textColor="#E11584"
+            android:textColorHint="#E11584"/>
 
         <!-- Awake Time Picker -->
         <TextView
@@ -95,7 +108,8 @@
             android:layout_marginTop="8dp"
             android:background="#50FFFFFF"
             android:timePickerMode="spinner"
-            android:textColorPrimary="#E11584"/>
+            android:textColor="#E11584"
+            android:textColorHint="#E11584"/>
 
         <Button
             android:id="@+id/btnSave"
