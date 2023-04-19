@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SleepTrackerActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_back"/>
+
+            <ImageView
+                android:id="@+id/delete_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="350dp"
+                android:src="@drawable/bin"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="When do you sleep"
+            android:textSize="20sp"
+            android:textColor="#E11584"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/textViewDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="end"
+            android:textColor="#E11584"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+        <!--Sleep Time Picker -->
+        <TextView
+            android:id="@+id/sleepTimeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="I went to bed on:"
+            android:textSize="15sp"
+            android:textColor="#E11584"/>
+
+        <TimePicker
+            android:id="@+id/sleepTimePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_below="@id/sleepTimeText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:background="#50FFFFFF"
+            android:timePickerMode="spinner"
+            android:textColor="#E11584"
+            android:textColorHint="#E11584"/>
+
+        <!-- Awake Time Picker -->
+        <TextView
+            android:id="@+id/awakeTimeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="I woke up on:"
+            android:textSize="15sp"
+            android:layout_below="@id/sleepTimePicker"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#E11584"/>
+
+        <TimePicker
+            android:id="@+id/awakeTimePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_below="@id/awakeTimeText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:background="#50FFFFFF"
+            android:timePickerMode="spinner"
+            android:textColor="#E11584"
+            android:textColorHint="#E11584"/>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_button"
+            android:text="Save"
+            android:textColor="#E11584"/>
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

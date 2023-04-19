@@ -102,6 +102,9 @@ public class CalendarActivity extends AppCompatActivity {
         txStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                txStart.setClickable(true);
+                txStart.setTextColor(Color.parseColor("#fff"));
                 if(txStart.getText() == "Start Period"){
                     Event ev2 = new Event(Color.parseColor(PERIOD_DAY_COLOR), selectedDay.getTime(), "period day");
                     compactCalendarView.addEvent(ev2);
@@ -127,6 +130,8 @@ public class CalendarActivity extends AppCompatActivity {
                     }
 
                 }
+
+
             }
         });
 
@@ -134,7 +139,7 @@ public class CalendarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CalendarActivity.this, Symptom.class);
-                intent.putExtra("selectedDay", selectedDay);
+                intent.putExtra("selectedDay", dateFormatDay.format(selectedDay));
                 startActivity(intent);
             }
         });
@@ -142,21 +147,30 @@ public class CalendarActivity extends AppCompatActivity {
         txSleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//                TextView tx = findViewById(R.id.fuckyou);
+//                tx.setText(dateFormatDay.format(selectedDay));
+                Intent intent = new Intent(CalendarActivity.this, SleepTrackerActivity.class);
+                intent.putExtra("date", dateFormatDay.format(selectedDay));
+                intent.putExtra("email", email);
+                startActivity(intent);
             }
         });
 
         txNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(CalendarActivity.this, NoteActivity.class);
+                intent.putExtra("selectedDay", dateFormatDay.format(selectedDay));
+                startActivity(intent);
             }
         });
+
 
         compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
-                selectedDay = dateClicked;
+                Calendar calendar = Calendar.getInstance();
+                selectedDay = new Date(dateClicked.getTime());
                 List<Event> events = compactCalendarView.getEvents(dateClicked);
                 //Log.d(TAG, "Day was clicked: " + dateClicked + " with events " + events);
 
@@ -171,6 +185,15 @@ public class CalendarActivity extends AppCompatActivity {
                 }
                 else {
                     txStart.setText("Start Period");
+                }
+
+                if(selectedDay.getTime() <= calendar.getTimeInMillis()){
+                    txStart.setClickable(true);
+                    txStart.setTextColor(Color.WHITE);
+                }
+                else{
+                    txStart.setClickable(false);
+                    txStart.setTextColor(Color.parseColor("#40FFFFFF"));
                 }
 
             }
@@ -188,9 +211,11 @@ public class CalendarActivity extends AppCompatActivity {
         compactCalendarView = findViewById(R.id.compactcalendar_view);
         compactCalendarView.setUseThreeLetterAbbreviation(true);
         compactCalendarView.setEventIndicatorStyle(1);
+        compactCalendarView.shouldDrawIndicatorsBelowSelectedDays(true);
 
         title = findViewById(R.id.textViewMonth);
         title.setText(dateFormatMonth.format(new Date(System.currentTimeMillis())));
+        txStart.setClickable(true);
 
         ShapeDrawable period = new ShapeDrawable(new ArcShape(0, 360));
         period.setIntrinsicWidth(50);
@@ -227,12 +252,15 @@ public class CalendarActivity extends AppCompatActivity {
     private void setPeriodEvent(){
         previousPeriod = db.selectPreviousPeriod(email);
         Date periodDay;
+        Calendar initPeriod = Calendar.getInstance();
         Calendar startPeriod = Calendar.getInstance();
         Calendar endPeriod = Calendar.getInstance();
         Calendar currentDay = Calendar.getInstance();
-
+        selectedDay = new Date();
+        selectedDay = currentDay.getTime();
         try{
             periodDay = dateFormatDay.parse(previousPeriod.get("startPeriod"));
+            initPeriod.setTime(periodDay);
             startPeriod.setTime(periodDay);
             if(Integer.parseInt(previousPeriod.get("periodTimes")) == 1){
 
@@ -242,14 +270,13 @@ public class CalendarActivity extends AppCompatActivity {
                     db.updateEndPeriod(dateFormatDay.format(new Date(endMili)), 7, email, previousPeriod.get("periodTimes"));
                 }
 
-
             }
 
             if(previousPeriod.get("endPeriod") == null) {
                 txStart.setText("End Period");
                 //current day - start period day
 
-                for(int i = 0; i < (int) ((currentDay.getTimeInMillis() - startPeriod.getTimeInMillis()) / (1000 * 60 * 60 * 24)) + 1; i++){
+                for(int i = 0; i < (int) ((currentDay.getTimeInMillis() - initPeriod.getTimeInMillis()) / (1000 * 60 * 60 * 24)) + 1; i++){
                     periodDay = startPeriod.getTime();
                     Event newUserEvt = new Event(Color.parseColor(PERIOD_DAY_COLOR), periodDay.getTime(), "period day");
                     compactCalendarView.addEvent(newUserEvt);
@@ -261,7 +288,7 @@ public class CalendarActivity extends AppCompatActivity {
                 txStart.setText("Start Period");
                 endPeriod.setTime(dateFormatDay.parse(previousPeriod.get("endPeriod")));
 
-                for(int i = 0; i < (int) ((endPeriod.getTimeInMillis() - startPeriod.getTimeInMillis()) / (1000 * 60 * 60 * 24)) + 1; i++){
+                for(int i = 0; i < (int) ((endPeriod.getTimeInMillis() - initPeriod.getTimeInMillis()) / (1000 * 60 * 60 * 24)) + 1; i++){
                     periodDay = startPeriod.getTime();
                     Event newUserEvt = new Event(Color.parseColor(PERIOD_DAY_COLOR), periodDay.getTime(), "period day");
                     compactCalendarView.addEvent(newUserEvt);
@@ -328,11 +355,15 @@ public class CalendarActivity extends AppCompatActivity {
             Calendar calculatePredict = Calendar.getInstance();
             calculatePredict.setTime(firstDayPredict.getTime());
 
-
             Date predictDay = calculatePredict.getTime();
             Event ev2 = new Event(Color.parseColor(OVULATION_DAY_COLOR), predictDay.getTime());
             compactCalendarView.addEvent(ev2);
             setOvulationWeek(predictDay);
+
+//            Date predictDay = calculatePredict.getTime();
+//            Event ev2 = new Event(Color.parseColor(OVULATION_DAY_COLOR), predictDay.getTime());
+//            compactCalendarView.addEvent(ev2);
+//            setOvulationWeek(predictDay);
 
             setOvulationPeriod(firstDayPredict.getTime());
         }
@@ -363,5 +394,4 @@ public class CalendarActivity extends AppCompatActivity {
         intent.putExtra("email", email);
         startActivity(intent);
     }
-
 }
