@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PeriodTracker">
         <activity
+            android:name=".SleepTrackerActivity"
+            android:exported="false" />
+        <activity
             android:name=".NoteActivity"
             android:exported="false" />
         <activity
