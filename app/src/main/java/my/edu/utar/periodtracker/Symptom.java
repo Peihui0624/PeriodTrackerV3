@@ -39,13 +39,37 @@ public class Symptom extends AppCompatActivity {
         setContentView(R.layout.activity_symptom);
 
         ImageView backButton = findViewById(R.id.back_button);
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
+
+        Intent intent = getIntent();
+        currentDate = intent.getStringExtra("selectedDay");
+
+        LinearLayout crampLayout = findViewById(R.id.cramp_layout);
+        LinearLayout fluidLayout = findViewById(R.id.fluid_layout);
+        LinearLayout mentalLayout = findViewById(R.id.mental_layout);
+
+        // Create the ImageButtons for the cramp symptom
+        for (int i = 0; i < crampImages.length; i++) {
+            ImageButton crampButton = createSymptomButton(crampImages[i], crampLayout, i);
+            crampLayout.addView(crampButton);
+        }
+
+        // Create the ImageButtons for the fluid symptom
+        for (int i = 0; i < fluidImages.length; i++) {
+            ImageButton fluidButton = createSymptomButton(fluidImages[i], fluidLayout, i);
+            fluidLayout.addView(fluidButton);
+        }
+
+        // Create the ImageButtons for the mental symptom
+        for (int i = 0; i < mentalImages.length; i++) {
+            ImageButton mentalButton = createSymptomButton(mentalImages[i], mentalLayout, i);
+            mentalLayout.addView(mentalButton);
+        }
 
         Button saveButton = findViewById(R.id.save_button);
         // Declare arrays to keep track of selected indexes for each layout
@@ -94,32 +118,6 @@ public class Symptom extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-        Intent intent = getIntent();
-        currentDate = intent.getStringExtra("selectedDay");
-
-        LinearLayout crampLayout = findViewById(R.id.cramp_layout);
-        LinearLayout fluidLayout = findViewById(R.id.fluid_layout);
-        LinearLayout mentalLayout = findViewById(R.id.mental_layout);
-
-        // Create the ImageButtons for the cramp symptom
-        for (int i = 0; i < crampImages.length; i++) {
-            ImageButton crampButton = createSymptomButton(crampImages[i], crampLayout, i);
-            crampLayout.addView(crampButton);
-        }
-
-        // Create the ImageButtons for the fluid symptom
-        for (int i = 0; i < fluidImages.length; i++) {
-            ImageButton fluidButton = createSymptomButton(fluidImages[i], fluidLayout, i);
-            fluidLayout.addView(fluidButton);
-        }
-
-        // Create the ImageButtons for the mental symptom
-        for (int i = 0; i < mentalImages.length; i++) {
-            ImageButton mentalButton = createSymptomButton(mentalImages[i], mentalLayout, i);
-            mentalLayout.addView(mentalButton);
-        }
     }
 
     private ImageButton createSymptomButton(int imageResId, LinearLayout layout, int index) {
