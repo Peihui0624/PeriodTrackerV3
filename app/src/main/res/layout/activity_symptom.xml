@@ -28,12 +28,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="Symptoms"
             android:textColor="#E11584"
             android:textSize="30sp"
             android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="350dp"
+                android:background="@drawable/save"/>
 
         </RelativeLayout>
 
@@ -74,10 +81,12 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Fluid"
-            android:textColor="#fff"
-            android:textSize="15sp"/>
+            android:textColor="#E11584"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
+            android:id="@+id/fluid_layout"
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:orientation="horizontal"
@@ -94,10 +103,12 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Mental"
-            android:textColor="#fff"
-            android:textSize="15sp"/>
+            android:textColor="#E11584"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
+            android:id="@+id/mental_layout"
             android:layout_width="match_parent"
             android:layout_height="103dp"
             android:orientation="horizontal"

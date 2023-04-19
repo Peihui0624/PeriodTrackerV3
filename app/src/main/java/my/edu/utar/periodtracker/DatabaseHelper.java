@@ -6,13 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "PeriodTrackerDB.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
 
     // Table name and column names
     public static final String TABLE_USERS = "users";
@@ -28,6 +31,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_END_PERIOD = "endPeriod";
     private static final String COLUMN_TOTAL_PERIOD_DAY = "totalDay";
     private static final String COLUMN_PERIOD_TIMES = "periodTimes";
+
+    //Symptoms table name and column name
+    public static final String TABLE_SYMPTOMS = "symptom";
+    public static final String COLUMN_SYMPTOMS_ID = "_id";
+    public static final String COLUMN_IMAGE = "image";
+    public static final String COLUMN_DATE = "date";
+
+    //Sleep table name and column name
+    private static final String TABLE_SLEEP = "sleepTracker";
+    private static final String COLUMN_SLEEP_ID = "sleep_id";
+    private static final String COLUMN_SLEEP_DATE = "date";
+    private static final String COLUMN_SLEEP_TIME = "sleep_time";
+    private static final String COLUMN_AWAKE_TIME = "awake_time";
 
     // SQL statement to create the users table
     private static final String CREATE_TABLE_USERS =
@@ -48,6 +64,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_EMAIL + " TEXT NOT NULL," +
                     "FOREIGN KEY(" + COLUMN_EMAIL + ") REFERENCES "+ TABLE_USERS +"("+ COLUMN_EMAIL +"));";
 
+    //Symptom table
+    private static final String CREATE_TABLE_SYMPTOMS =
+            "CREATE TABLE " + TABLE_SYMPTOMS + " ("
+                + COLUMN_SYMPTOMS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + COLUMN_IMAGE + " INTEGER, "
+                    + COLUMN_DATE + " TEXT);";
+
+    //Sleep table
+    private static final String CREATE_TABLE_SLEEP =
+            "CREATE TABLE " + TABLE_SLEEP + " (" +
+                    COLUMN_SLEEP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_SLEEP_DATE + " TEXT NOT NULL, " +
+                    COLUMN_SLEEP_TIME + " TEXT, " +
+                    COLUMN_AWAKE_TIME + " INTEGER NOT NULL," +
+                    COLUMN_EMAIL + " TEXT NOT NULL," +
+                    "FOREIGN KEY(" + COLUMN_EMAIL + ") REFERENCES "+ TABLE_USERS +"("+ COLUMN_EMAIL +"));";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -57,12 +90,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(CREATE_TABLE_USERS);
         db.execSQL(CREATE_TABLE_PERIOD);
+        db.execSQL(CREATE_TABLE_SYMPTOMS);
+        db.execSQL(CREATE_TABLE_SLEEP);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PERIOD);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SYMPTOMS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SLEEP);
         onCreate(db);
     }
 

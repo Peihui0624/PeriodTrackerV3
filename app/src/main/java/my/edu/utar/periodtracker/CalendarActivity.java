@@ -134,6 +134,7 @@ public class CalendarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CalendarActivity.this, Symptom.class);
+                intent.putExtra("selectedDay", selectedDay);
                 startActivity(intent);
             }
         });
@@ -151,7 +152,6 @@ public class CalendarActivity extends AppCompatActivity {
 
             }
         });
-
 
         compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
@@ -358,5 +358,10 @@ public class CalendarActivity extends AppCompatActivity {
         }
     }
 
+    public void navigateToProfilePage(View view){
+        Intent intent = new Intent(CalendarActivity.this, ProfileActivity.class);
+        intent.putExtra("email", email);
+        startActivity(intent);
+    }
 
 }
