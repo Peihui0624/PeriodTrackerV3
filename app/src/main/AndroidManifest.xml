@@ -19,9 +19,6 @@
             android:name=".NoteActivity"
             android:exported="false" />
         <activity
-            android:name=".SummaryActivity"
-            android:exported="false" />
-        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity

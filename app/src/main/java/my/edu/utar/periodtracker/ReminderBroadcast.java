@@ -1,55 +1,37 @@
 package my.edu.utar.periodtracker;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
+import my.edu.utar.periodtracker.R;
+
 public class ReminderBroadcast extends BroadcastReceiver {
-    private static final int NOTIFICATION_ID_SLEEP_REMINDER = 1;
-    private static final int NOTIFICATION_ID_DRINK_REMINDER = 2;
+    private static final int NOTIFICATION_ID = 1;
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String notificationTitle = "";
-        String notificationMessage = "";
-        int notificationId = 0;
-
-        // Get the notification title, message, and ID based on the intent action
-        String action = intent.getAction();
-        if (action != null) {
-            switch (action) {
-                case "ACTION_SHOW_SLEEP_REMINDER":
-                    notificationTitle = "Sleep Reminder";
-                    notificationMessage = "It's time to go to bed.";
-                    notificationId = NOTIFICATION_ID_SLEEP_REMINDER;
-                    break;
-                case "ACTION_SHOW_DRINK_REMINDER":
-                    notificationTitle = "Drink Reminder";
-                    notificationMessage = "It's time to stay hydrated.";
-                    notificationId = NOTIFICATION_ID_DRINK_REMINDER;
-                    break;
-            }
-        }
 
         // Create a notification intent to be shown when the notification is clicked
-        Intent notificationIntent = new Intent(context, ReminderActivity.class);
+        Intent notificationIntent = new Intent(context, ReminderBroadcast.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Create the notification
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "channel1")
-                .setContentTitle(notificationTitle)
-                .setContentText(notificationMessage)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notifyPeriod")
+                .setContentTitle("Reminder")
+                .setContentText("Remember to sleep on time and get hydrated.")
                 .setSmallIcon(R.drawable.ic_baseline_notification_important_24)
                 .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         // Show the notification
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(notificationId, builder.build());
-
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
 }

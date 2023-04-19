@@ -80,36 +80,36 @@ public class Symptom extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                // Save the selected indexes for each layout to the database
-//                DatabaseHelper dbHelper = new DatabaseHelper(Symptom.this);
-//                SQLiteDatabase db = dbHelper.getWritableDatabase();
-//                ContentValues values = new ContentValues();
-//
-//                // Save selected cramp indexes
-//                for (int i = 0; i < selectedCrampIndexes.size(); i++) {
-//                    values.clear();
-//                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_IMAGE, crampImages[selectedCrampIndexes.get(i)]);
-//                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_DATE, currentDate);
-//                    db.insert(SymptomContract.SymptomEntry.TABLE_SYMPTOMS, null, values);
-//                }
-//
-//                // Save selected fluid indexes
-//                for (int i = 0; i < selectedFluidIndexes.size(); i++) {
-//                    values.clear();
-//                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_IMAGE, fluidImages[selectedFluidIndexes.get(i)]);
-//                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_DATE, currentDate);
-//                    db.insert(SymptomContract.SymptomEntry.TABLE_SYMPTOMS, null, values);
-//                }
-//
-//                // Save selected mental indexes
-//                for (int i = 0; i < selectedMentalIndexes.size(); i++) {
-//                    values.clear();
-//                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_IMAGE, mentalImages[selectedMentalIndexes.get(i)]);
-//                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_DATE, currentDate);
-//                    db.insert(SymptomContract.SymptomEntry.TABLE_SYMPTOMS, null, values);
-//                }
-//
-//                db.close();
+                // Save the selected indexes for each layout to the database
+                DatabaseHelper dbHelper = new DatabaseHelper(Symptom.this);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+
+                // Save selected cramp indexes
+                for (int i = 0; i < selectedCrampIndexes.size(); i++) {
+                    values.clear();
+                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_IMAGE, crampImages[selectedCrampIndexes.get(i)]);
+                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_DATE, currentDate);
+                    db.insert(SymptomContract.SymptomEntry.TABLE_SYMPTOMS, null, values);
+                }
+
+                // Save selected fluid indexes
+                for (int i = 0; i < selectedFluidIndexes.size(); i++) {
+                    values.clear();
+                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_IMAGE, fluidImages[selectedFluidIndexes.get(i)]);
+                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_DATE, currentDate);
+                    db.insert(SymptomContract.SymptomEntry.TABLE_SYMPTOMS, null, values);
+                }
+
+                // Save selected mental indexes
+                for (int i = 0; i < selectedMentalIndexes.size(); i++) {
+                    values.clear();
+                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_IMAGE, mentalImages[selectedMentalIndexes.get(i)]);
+                    values.put(SymptomContract.SymptomEntry.COLUMN_NAME_DATE, currentDate);
+                    db.insert(SymptomContract.SymptomEntry.TABLE_SYMPTOMS, null, values);
+                }
+
+                db.close();
 
                 // Show a toast message to indicate successful storage
                 Toast.makeText(Symptom.this, "Selected images and date stored in database.", Toast.LENGTH_SHORT).show();

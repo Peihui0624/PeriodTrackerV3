@@ -3,12 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Degree/Y2S3/MAD/PeriodTrackerV3/app/src/main/res/drawable-v24/ic_baseline_delete_24.xml" value="0.2703125" />
-        <entry key="..\:/Degree/Y2S3/MAD/PeriodTrackerV3/app/src/main/res/drawable-v24/ic_baseline_done_24.xml" value="0.2703125" />
-        <entry key="..\:/Degree/Y2S3/MAD/PeriodTrackerV3/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.14635416666666667" />
-        <entry key="..\:/Degree/Y2S3/MAD/PeriodTrackerV3/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.14635416666666667" />
-        <entry key="..\:/Degree/Y2S3/MAD/PeriodTrackerV3/app/src/main/res/layout/activity_note.xml" value="0.1793478260869565" />
-        <entry key="..\:/Degree/Y2S3/MAD/PeriodTrackerV3/app/src/main/res/layout/activity_sleep_tracker.xml" value="0.2" />
         <entry key="..\:/Degree/Y2S3/MAD/Period_Tracker/app/src/main/res/drawable/rounded_button.xml" value="0.2703125" />
         <entry key="..\:/Degree/Y2S3/MAD/Period_Tracker/app/src/main/res/drawable/rounded_curve.xml" value="0.2703125" />
         <entry key="..\:/Degree/Y2S3/MAD/Period_Tracker/app/src/main/res/layout/activity_calendar.xml" value="0.2" />
@@ -37,6 +31,8 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/Period_Tracker/app/src/main/res/layout/activity_note.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Period_Tracker/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Period_Tracker/app/src/main/res/layout/activity_register.xml" value="0.1403985507246377" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/Period_Tracker/app/src/main/res/layout/activity_reminder.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/Period_Tracker/app/src/main/res/layout/activity_sleep_tracker.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Period_Tracker/app/src/main/res/layout/activity_summary.xml" value="0.1" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Period_Tracker/app/src/main/res/layout/activity_symptom.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Period_Tracker/app/src/main/res/layout/activity_try_frag_v2.xml" value="0.22083333333333333" />

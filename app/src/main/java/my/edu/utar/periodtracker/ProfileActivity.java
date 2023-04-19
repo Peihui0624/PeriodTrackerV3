@@ -57,6 +57,17 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        //setting button
+        ImageView setting_button = findViewById(R.id.setting_button);
+
+        setting_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, ReminderActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Find the logout button by ID
         logoutButton = findViewById(R.id.buttonLogout);

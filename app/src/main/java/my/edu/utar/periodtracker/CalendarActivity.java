@@ -104,7 +104,7 @@ public class CalendarActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 txStart.setClickable(true);
-                txStart.setTextColor(Color.parseColor("#fff"));
+                txStart.setTextColor(Color.WHITE);
                 if(txStart.getText() == "Start Period"){
                     Event ev2 = new Event(Color.parseColor(PERIOD_DAY_COLOR), selectedDay.getTime(), "period day");
                     compactCalendarView.addEvent(ev2);
@@ -147,8 +147,6 @@ public class CalendarActivity extends AppCompatActivity {
         txSleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                TextView tx = findViewById(R.id.fuckyou);
-//                tx.setText(dateFormatDay.format(selectedDay));
                 Intent intent = new Intent(CalendarActivity.this, SleepTrackerActivity.class);
                 intent.putExtra("date", dateFormatDay.format(selectedDay));
                 intent.putExtra("email", email);

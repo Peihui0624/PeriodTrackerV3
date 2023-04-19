@@ -44,6 +44,14 @@
             android:textStyle="bold"
             android:textColor="#E11584"/>
 
+        <ImageView
+            android:id="@+id/setting_button"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/ic_baseline_settings_24"/>
+
     </LinearLayout>
 
     <TableLayout
