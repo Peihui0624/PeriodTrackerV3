@@ -24,7 +24,7 @@ public class ReminderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_reminder);
 
         // Find the Switch by its ID
         Switch switchNotification = findViewById(R.id.switchNotification);
@@ -64,8 +64,8 @@ public class ReminderActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
 
         // Set the time for sleep reminder notification (e.g. 10:00 PM)
-        calendar.set(Calendar.HOUR_OF_DAY, 7);
-        calendar.set(Calendar.MINUTE, 26);
+        calendar.set(Calendar.HOUR_OF_DAY, 9);
+        calendar.set(Calendar.MINUTE, 23);
         calendar.set(Calendar.SECOND, 0);
         long sleepReminderTime = calendar.getTimeInMillis();
 
